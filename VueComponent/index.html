@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>firstcli</title>
+    <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"> </script>
+</head>
+
+<body>
+    <div id="app1">
+        <my-title> </my-title>
+        <hr>
+        <my-title></my-title>
+    </div>
+
+    <div id="app2">
+        <cmp> </cmp>
+        <hr>
+        <cmp></cmp>
+    </div>
+
+
+    <script>
+        //var data = { title: "Гарчиг" }
+        //Vue.component('addTag', { object: 'object' })
+        var cmp = {
+            data: function () {
+                return { title: "Гарчиг" }
+
+            },
+            template: '<p>Гарчиг: <button @click="changeTitle"> Гарчиг өөрчлөх</button> {{title}}</p>',
+            methods: {
+                changeTitle: function () {
+                    this.title = "Шинэ гарчиг"
+                }
+            }
+        }
+        new Vue({
+            el: "#app1",
+            components: {
+                'my-title': cmp
+            }
+        })
+
+        new Vue({
+            el: "#app2",
+            components: {
+                cmp
+            }
+        })
+    </script>
+</body>
+
+</html>
